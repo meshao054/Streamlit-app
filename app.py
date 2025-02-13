@@ -30,37 +30,42 @@ def generate_content_ideas(niche, topic):
     ]
     return sample(content_ideas, 5)  # Return 5 unique ideas with descriptions
 
-# Streamlit app interface
+# Set page configuration
 st.set_page_config(page_title="Content Idea Generator & Document Search", page_icon="📝")
 
-# CSS Styling for enhanced appearance
-st.markdown("""
+# Custom CSS for background image
+background_image_url = "https://source.unsplash.com/1600x900/?technology,abstract"  # Change to your preferred image
+st.markdown(f"""
     <style>
-    .idea-box {
-        background-color: #f7f9fa;
+    .stApp {{
+        background: url("{background_image_url}") no-repeat center center fixed;
+        background-size: cover;
+    }}
+    .idea-box {{
+        background-color: rgba(247, 249, 250, 0.9);
         padding: 1em;
         margin-bottom: 1em;
         border-radius: 8px;
         border: 1px solid #e3e3e3;
         color: #333;
-    }
-    .idea-title {
+    }}
+    .idea-title {{
         font-weight: bold;
         font-size: 1.1rem;
         color: #333;
-    }
-    .idea-description {
+    }}
+    .idea-description {{
         font-size: 0.9rem;
         color: #555;
         margin-top: 0.2em;
-    }
-    .doc-display {
-        background-color: #eef;
+    }}
+    .doc-display {{
+        background-color: rgba(238, 238, 255, 0.9);
         padding: 1em;
         margin-bottom: 1em;
         border-radius: 8px;
         color: #333;
-    }
+    }}
     </style>
 """, unsafe_allow_html=True)
 
