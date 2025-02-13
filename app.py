@@ -1,7 +1,6 @@
-import streamlit as st
 import spacy
 from random import sample
-
+import streamlit as st
 # Load spaCy language model
 nlp = spacy.load("en_core_web_sm")
 
@@ -30,42 +29,72 @@ def generate_content_ideas(niche, topic):
     ]
     return sample(content_ideas, 5)  # Return 5 unique ideas with descriptions
 
-# Set page configuration
+# Streamlit app interface
 st.set_page_config(page_title="Content Idea Generator & Document Search", page_icon="📝")
 
-# Custom CSS for background image
-background_image_url = "https://www.istockphoto.com/photo/student-working-in-library-at-night-gm143071446-24422647"  # Change to your preferred image
-# Custom CSS for background image and button styling
-st.markdown(f"""
+# CSS Styling for enhanced appearance
+st.markdown("""
     <style>
-    .stApp {{
-        background: url("{background_image_url}") no-repeat center center fixed;
-        background-size: cover;
-    }}
-
-    /* Custom styling for the Generate button */
-    .stButton>button {{
+    /* Styling for content idea boxes */
+    .idea-box {
+        background-color: #f7f9fa;
+        padding: 1em;
+        margin-bottom: 1em;
+        border-radius: 8px;
+        border: 1px solid #e3e3e3;
+        color: #333;
+    }
+    
+    .idea-title {
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #222; /* Slightly darker for better contrast */
+    }
+    
+    .idea-description {
+        font-size: 0.9rem;
+        color: #555;
+        margin-top: 0.2em;
+    }
+    
+    /* Styling for document display */
+    .doc-display {
+        background-color: #eef;
+        padding: 1em;
+        margin-bottom: 1em;
+        border-radius: 8px;
+        color: #333;
+    }
+    
+    /* Custom styling for the Generate Content Ideas button */
+    .stButton > button {
         background-color: #e3f2fd;  /* Pale blue (default) */
         color: #000;
-        border: none;
-        padding: 10px 20px;
+        border: 2px solid #bbdefb; /* Light blue border */
+        padding: 12px 24px;
         border-radius: 8px;
         font-size: 16px;
         font-weight: bold;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }}
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    }
 
-    .stButton>button:hover {{
-        background-color: #90caf9;  /* Darker blue when hovered */
+    /* Hover effect: slightly darker blue */
+    .stButton > button:hover {
+        background-color: #90caf9;
         color: #000;
-    }}
+        border-color: #64b5f6;
+    }
 
-    .stButton>button:active {{
-        background-color: #1976d2 !important;  /* Deep blue when clicked */
+    /* Active effect: deep blue with white text */
+    .stButton > button:active {
+        background-color: #1976d2 !important;
         color: white !important;
-    }}
+        border-color: #1565c0 !important;
+    }
     </style>
 """, unsafe_allow_html=True)
+
 
 # Content Idea Generation Section
 st.header("Content Idea Generator")
@@ -126,3 +155,4 @@ if st.button("Search Documents"):
             st.write(f"No documents found for niche '{search_niche}' and topic '{search_topic}'")
     else:
         st.write("Please enter both a search niche and a topic.")
+
