@@ -34,37 +34,35 @@ def generate_content_ideas(niche, topic):
 st.set_page_config(page_title="Content Idea Generator & Document Search", page_icon="📝")
 
 # Custom CSS for background image
-background_image_url = "https://source.unsplash.com/1600x900/?technology,abstract"  # Change to your preferred image
+background_image_url = "https://www.istockphoto.com/photo/student-working-in-library-at-night-gm143071446-24422647"  # Change to your preferred image
+# Custom CSS for background image and button styling
 st.markdown(f"""
     <style>
     .stApp {{
         background: url("{background_image_url}") no-repeat center center fixed;
         background-size: cover;
     }}
-    .idea-box {{
-        background-color: rgba(247, 249, 250, 0.9);
-        padding: 1em;
-        margin-bottom: 1em;
+
+    /* Custom styling for the Generate button */
+    .stButton>button {{
+        background-color: #e3f2fd;  /* Pale blue (default) */
+        color: #000;
+        border: none;
+        padding: 10px 20px;
         border-radius: 8px;
-        border: 1px solid #e3e3e3;
-        color: #333;
-    }}
-    .idea-title {{
+        font-size: 16px;
         font-weight: bold;
-        font-size: 1.1rem;
-        color: #333;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }}
-    .idea-description {{
-        font-size: 0.9rem;
-        color: #555;
-        margin-top: 0.2em;
+
+    .stButton>button:hover {{
+        background-color: #90caf9;  /* Darker blue when hovered */
+        color: #000;
     }}
-    .doc-display {{
-        background-color: rgba(238, 238, 255, 0.9);
-        padding: 1em;
-        margin-bottom: 1em;
-        border-radius: 8px;
-        color: #333;
+
+    .stButton>button:active {{
+        background-color: #1976d2 !important;  /* Deep blue when clicked */
+        color: white !important;
     }}
     </style>
 """, unsafe_allow_html=True)
